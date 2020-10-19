@@ -1,0 +1,33 @@
+#content {
+  width: 642px;
+  height: 800px;
+  position: relative;
+  margin: 0 auto;
+  border:1px solid #000000;
+}
+#container {
+  width: 640px;
+  height: 480px;
+}
+#myCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+#video {
+  width: 640px;
+  height: 480px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.coordinates{
+  display:flex;
+  position: relative;
+  margin: 0 auto;
+  width: 640px;
+}
+.fixed{
+  width: 120px;
+}

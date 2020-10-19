@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>FPVCar</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="jquery-3.4.1.min.js"></script>
+  <script>var hostname = '{{hostname}}';</script>
+  <script src="script.js"></script>
+</head>
+
+<body>
+    <div id="video">
+        
+        <div class="coordinates">
+          <div id="xy" class="fixed">x y</div>
+          <div id="cxcy" class="fixed">cx cy</div>
+          <div id="lr" class="fixed">left right</div>
+        </div>
+
+        <br><br> Send:
+        <input type="text" id="msg" maxlength="25" size="30" /> &nbsp;
+        <input type="button" onclick="sendMsg();" value="Send" />
+        <br> Received:
+        <br>
+        <textarea id="out" rows="4" cols="50"></textarea>
+        <br>
+        <input type="button" onclick="echo()" value="echo" />
+        <br>
+        <input type="button" onclick="fetchStats()" value="fetch stats" />
+        <br>
+        Vbat:<span id="vbat">0</span><br>
+        Vbus:<span id="vbus">0</span>
+        <br>
+        <input type="button" onclick="playSound('chicken')" value="chicken" />
+        <input type="button" onclick="playSound('sheep')" value="sheep" />
+        <input type="button" onclick="playSound('cat')" value="cat" />
+        <br>
+        <input type="button" onclick="startCam()" value="start cam" />
+        <input type="button" onclick="stopCam()" value="stop cam" />
+    </div>
+    
+    <canvas id="myCanvas" width="300px" height="300px"></canvas>
+
+</body>
+
+</html>

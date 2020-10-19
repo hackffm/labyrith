@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>FPVCar</title>
+    <link rel="stylesheet" href="all.min.css">
+  <link rel="stylesheet" href="playerstyle.css">
+  <script>var hostname = '{{hostname}}';</script>
+      <script src="jquery-3.4.1.min.js"></script>
+  <script src="playerscript.js"></script>
+  <script src="colorpicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="cp-themes.css" />
+</head>
+
+<body>
+    <div id="video"> 
+        <h1>Player</h1>
+        
+        <input type="button" onclick="playSound('chicken')" value="chicken" /> <br>
+        <input type="button" onclick="startCam()" value="start cam" /> <br>
+        <input type="button" onclick="startGame()" value="start game" /> <br>
+        <button onclick="rfid('100101011', 'car1', 'add')">RFID: KeyCard1234 add</button> <br>
+        <button onclick="rfid('100101011', 'car1', 'rem')">RFID: KeyCard1234 remove</button> <br>
+        <button onclick="rfid('111111101', 'car1', 'use')">RFID: Door1234</button> <br>
+        <button onclick="move('car1', 20, 55)">move: car1</button><br>
+        <span style="color:#ffffff">led white</span>
+        <input type="range" min="0" max="255" value="0" class="slider" id="white_led">
+        <br>
+        <span style="color:#ffffff">laser</span>
+        <input type="range" min="0" max="255" value="0" class="slider" id="laser">
+        <br>
+        <span style="color:#ffffff">servo h</span>
+        <input type="range" min="0" max="180" value="0" class="slider" id="servo_h">
+        <br>
+        <span style="color:#ffffff">servo v</span>
+        <input type="range" min="0" max="180" value="0" class="slider" id="servo_v">
+        <br>
+        <span style="color:#ffffff">led UV</span>
+        <input type="checkbox" id="led_uv">
+        <br>
+        <input type="button" id="switch_ir_code" value="IR-Code simulation">
+        <br>
+        <input type="button" id="switch_ir_code_list" value="IR-Code list">
+        <br>
+
+        <div id="color-picker" class="cp-small"></div>
+        <script type="text/javascript">
+          ColorPicker(
+            document.getElementById('color-picker'),
+            function(hex, hsv, rgb) {
+                console.log(hsv.h, hsv.s, hsv.v);         // [0-359], [0-1], [0-1]
+                console.log(rgb.r, rgb.g, rgb.b);         // [0-255], [0-255], [0-255]
+                console.log(hex);
+                ws.send(msgPrefixCar + '"light", "type":"color", "hex":"'+hex.substring(1)+'" }\r');
+            });
+        </script>
+        <br><br><br><br><br><br>
+        
+        <input type="button" id="switch_off" value="Switch Off">
+        <br>
+        
+        <ul id="items" class="fa-ul">
+
+        </ul>
+
+    </div>
+    <!-- base directions ------------------------------------------------------>
+    <div id="canvas_joystick">
+        <canvas id="cnvsJoy" width="100" height="100"></canvas>
+    </div>
+<script src="/canvasJoystick.js"></script>
+</body>
+</html>
